@@ -87,7 +87,7 @@ def get_fen():
             board_array[f[1][1]][f[1][0]] = f[0]
     if not red_side(board_array):
         reverse_board_array(board_array)
-    return board_array_to_fen(board_array)
+    return (board_array_to_fen(board_array), board_array)
 
 
 def red_side(board_array):
@@ -128,4 +128,4 @@ def board_array_to_fen(board_array):
 
 load_chesses(chess_dir)
 if __name__ == "__main__":
-    print(get_fen())
+    print(get_fen()[0])

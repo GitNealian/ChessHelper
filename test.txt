@@ -1,2 +1,4 @@
 ucci
+position fen r1bakab2/9/n1c1c1n2/p1p1p1R1p/9/C4r3/P3P1P1P/B1N1C1N2/9/1R1AKAB2 w - - 0 10
+go  depth 0
 quit
