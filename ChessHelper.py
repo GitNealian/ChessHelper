@@ -60,11 +60,13 @@ def move_format(board_array, move):
                    chinese_numbers.__reversed__()[end[1]]]
         else:
             pos = [str(start[1]+1), str(end[1]+1)]
+    offset = abs(start[0] - end[0])
+    offset = chinese_numbers[9-offset] if len(board_array[start[0]][start[1]]) == 2 else str(offset)
     # 修改棋盘
     tmp = board_array[start[0]][start[1]]
     board_array[start[0]][start[1]] = 0
     board_array[end[0]][end[1]] = tmp
-    return name + pos[0] + move_type + (str(abs(start[0] - end[0])) if start[1] == end[1] else pos[1])
+    return name + pos[0] + move_type + (offset if start[1] == end[1] else pos[1])
     # if start[0] == end[d]
 
 
@@ -109,9 +111,7 @@ class MainWindow(QWidget):
                 print(board_array)
                 self.text_updated.emit('深度：'+str(move[0])+' 评分：'+str(move[1])+'\n' +
                                        ' '.join(list(map(lambda x: move_format(board_copy, x), str(move[2]).split(' ')))))
-                # QApplication.processEvents()
-            help(fen + ' r - - 0 1', depth=12, on_move=append_move)
-
+            help(fen, depth=12, on_move=append_move)
         threading.Thread(target=do_help).start()
 
     def on_btnBrowseUcci_clicked(self):

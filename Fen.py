@@ -87,7 +87,8 @@ def get_fen():
             board_array[f[1][1]][f[1][0]] = f[0]
     if not red_side(board_array):
         reverse_board_array(board_array)
-    return (board_array_to_fen(board_array), board_array)
+    return (board_array_to_fen(board_array), board_array) + ' ' \
+        + ('r' if red_side(board_array) else 'b') + ' - - 0 1'
 
 
 def red_side(board_array):
